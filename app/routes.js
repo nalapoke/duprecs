@@ -131,7 +131,7 @@ router.get('/api/v1/users/:username/collection/folders/:folder_id/releases',
 //-------------------------------------
 
 router.get('*', function (req, res) {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + 'public/index.html');
 });
 
 module.exports = router;
