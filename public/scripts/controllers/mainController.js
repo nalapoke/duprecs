@@ -20,7 +20,7 @@ angular.module('duprecsApp')
     };
 
     function onGetUserSuccess(response) {
-      if (response.data && response.data.statusCode === 200) {
+      if (response.data) {
         vm.user = response.data;
       }
     };
