@@ -24,6 +24,13 @@ function getHost(req) {
   return host;
 }
 
+function handleError(err, res) {
+  res.status(err.statusCode || 500);
+  res.send({
+    message: err.message,
+  })
+}
+
 //-------------------------------------
 //        Discogs Authentication
 //-------------------------------------
@@ -37,7 +44,7 @@ router.get('/api/v1/authorize',
         getHost(req) + '/api/v1/authorize/callback',
         function (err, data){
           if (err) {
-            res.send(err);
+            return handleError(err, res);
           }
           oAuthAuthorizeData = data;
           res.redirect(oAuthAuthorizeData.authorizeUrl);
@@ -55,11 +62,12 @@ router.get('/api/v1/authorize/callback',
         req.query.oauth_verifier, // Verification code sent back by Discogs
         function (err, accessData){
           if (err) {
-            res.send(err);
+            return handleError(err, res);
           }
           // Persist "accessData" here for following OAuth calls
+          // TODO: return access data to client to set cookie
           oAuthRequestData = accessData;
-          res.status(200).json({ ok: true });
+          res.send();
         }
     );
   });
@@ -77,7 +85,7 @@ router.get('/api/v1/identity',
     disc.identity(
         function (err, data) {
           if (err) {
-            res.send(err);
+            return handleError(err, res);
           }
           res.send(data);
         }
@@ -95,7 +103,7 @@ router.get('/api/v1/users/:username',
         req.params.username,
         function (err, data) {
           if (err) {
-            res.send(err);
+            return handleError(err, res);
           }
           res.send(data);
         }
@@ -119,7 +127,7 @@ router.get('/api/v1/users/:username/collection/folders/:folder_id/releases',
         pagination,
         function (err, data) {
           if (err) {
-            res.send(err);
+            return handleError(err, res);
           }
           res.send(data);
         }
