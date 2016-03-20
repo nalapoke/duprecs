@@ -1,15 +1,8 @@
-<form ng-if="!MainCtrl.user">
+<form>
     <p>Enter your Discogs username:</p>
-    <input type="text" ng-model="MainCtrl.searchUsername">
-    <input type="submit" ng-click="MainCtrl.getCollectionForUser()" value="go">
+    <input type="text" ng-model="searchUsername">
+    <input type="submit" ng-click="MainCtrl.goToUserPage(searchUsername)" value="go">
 </form>
-
-<div ng-if="MainCtrl.user">
-    <input type="button" ng-click="MainCtrl.startOver()" value="start over">
-    <br />
-    <img ng-src="{{ MainCtrl.user.avatar_url }}" height="100" width="100">
-    {{ MainCtrl.user.username }}'s collection
-</div>
 
 
 

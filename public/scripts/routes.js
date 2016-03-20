@@ -7,6 +7,11 @@ angular.module('duprecsApp').config(['$routeProvider', function($routeProvider) 
       controller: 'MainController',
       controllerAs: 'MainCtrl'
     })
+    .when('/user/:username', {
+      templateUrl: 'views/user.html',
+      controller: 'UserController',
+      controllerAs: 'UserCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });

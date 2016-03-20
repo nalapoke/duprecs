@@ -1,0 +1,17 @@
+<p ng-if="!UserCtrl.user">finding Discogs user...</p>
+<p ng-if="UserCtrl.userError" style="font-weight: bold; color: red;">{{ UserCtrl.userError }}</p>
+<div ng-if="UserCtrl.user">
+    <img ng-src="{{ UserCtrl.user.avatar_url }}" height="100" width="100">
+    <p>{{ UserCtrl.user.username }}</p>
+    <p ng-if="UserCtrl.collection.length === 0">fetching {{ UserCtrl.user.username }}'s collection...</p>
+    <p ng-if="UserCtrl.collectionError" style="font-weight: bold; color: red;">{{ UserCtrl.collectionError }}</p>
+    <ul ng-if="UserCtrl.collection.length > 0">
+        <li ng-repeat="release in UserCtrl.collection">
+            <p>artist: {{ release.basic_information.artists[0].name }}</p>
+            <p>title: {{ release.basic_information.title }}</p>
+            <p>year: {{ release.basic_information.year }}</p>
+            <!--<img ng-src="{{ release.basic_information.thumb }}" height="50" width="50">-->
+            <br />
+        </li>
+    </ul>
+</div>
