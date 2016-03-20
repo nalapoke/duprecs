@@ -5,7 +5,7 @@ angular.module('duprecsApp').config(['$routeProvider', function($routeProvider) 
     .when('/', {
       templateUrl: 'views/main.html',
       controller: 'MainController',
-      controllerAs: 'MainController'
+      controllerAs: 'MainCtrl'
     })
     .otherwise({
       redirectTo: '/'
