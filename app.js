@@ -6,9 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./app/routes');
-var dbConnect = require('./app/db/dbConnect');
+//var dbConnect = require('./app/db/dbConnect');
 
-dbConnect.connect();
+//dbConnect.connect();
 
 var app = express();
 
