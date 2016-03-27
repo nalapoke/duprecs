@@ -1,8 +1,8 @@
 <div class="row" style="display: flex; align-items: center;">
     <div class="col-xs-6 col-sm-3 col-md-2">
         <img ng-if="!UserCtrl.user && !UserCtrl.userError" src="../images/vinyl_spinner.gif" height="100" width="100">
-        <img ng-if="UserCtrl.user" ng-src="{{ UserCtrl.user.avatar_url }}" height="100" width="100">
         <img ng-if="UserCtrl.userError" src="../images/vinyl_broken.gif" height="100" width="100">
+        <img ng-if="UserCtrl.user" ng-src="{{ UserCtrl.user.avatar_url }}" height="150" width="150">
     </div>
     <div class="col-xs-6 col-sm-9 col-md-10">
         <h3 ng-if="!UserCtrl.user && !UserCtrl.userError">finding Discogs user...</h3>
@@ -13,13 +13,12 @@
 <div class="row" ng-if="UserCtrl.user">
     <p ng-if="UserCtrl.collection.length === 0">fetching {{ UserCtrl.user.username }}'s collection...</p>
     <p ng-if="UserCtrl.collectionError" style="font-weight: bold; color: red;">{{ UserCtrl.collectionError }}</p>
-    <ul ng-if="UserCtrl.collection.length > 0">
-        <li ng-repeat="release in UserCtrl.collection">
-            <div><span class="glyphicon glyphicon-user"></span> {{ release.basic_information.artists[0].name }}</div>
-            <div><span class="glyphicon glyphicon-cd"></span> {{ release.basic_information.title }}</div>
-            <div><span class="glyphicon glyphicon-time"></span> {{ release.basic_information.year }}</div>
-            <img ng-src="{{ release.basic_information.thumb }}" height="50" width="50">
-            <br />
-        </li>
-    </ul>
+    <div ng-if="UserCtrl.collection.length > 0"
+         ng-repeat="release in UserCtrl.collection"
+         class="col-xs-6 col-sm-4 col-md-2">
+        <img ng-src="{{ release.basic_information.thumb }}" height="150" width="150">
+        <div>{{ release.basic_information.artists[0].name.substring(0,15) }}</div>
+        <div>{{ release.basic_information.title.substring(0,15) }}</div>
+        <div></span> {{ release.basic_information.year }}</div>
+    </div>
 </div>
