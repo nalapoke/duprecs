@@ -1,24 +1,26 @@
-<div class="row" style="display: flex; align-items: center;">
+<div class="row user-col-header">
     <div class="col-xs-6 col-sm-3 col-md-2">
-        <img ng-if="!UserCtrl.user && !UserCtrl.userError" src="../images/vinyl_spinner.gif" height="100" width="100">
-        <img ng-if="UserCtrl.userError" src="../images/vinyl_broken.gif" height="100" width="100">
-        <img ng-if="UserCtrl.user" ng-src="{{ UserCtrl.user.avatar_url }}" height="150" width="150">
+        <img ng-if="!UserCtrl.user && !UserCtrl.userError" class="user-header-img" src="../images/vinyl_spinner.gif">
+        <img ng-if="UserCtrl.userError" class="user-header-img" src="../images/vinyl_broken.gif">
+        <img ng-if="UserCtrl.user" ng-src="{{ UserCtrl.user.avatar_url }}" class="user-header-img shadow-img">
     </div>
     <div class="col-xs-6 col-sm-9 col-md-10">
         <h3 ng-if="!UserCtrl.user && !UserCtrl.userError">finding Discogs user...</h3>
         <h3 ng-if="UserCtrl.user">{{ UserCtrl.user.username }}</h3>
-        <h3 ng-if="UserCtrl.userError" style="font-weight: bold; color: red;">{{ UserCtrl.userError }}</h3>
+        <h3 ng-if="UserCtrl.userError" class="text-danger">{{ UserCtrl.userError }}</h3>
     </div>
 </div>
-<div class="row" ng-if="UserCtrl.user">
+<div class="row user-col-body" ng-if="UserCtrl.user">
     <p ng-if="UserCtrl.collection.length === 0">fetching {{ UserCtrl.user.username }}'s collection...</p>
-    <p ng-if="UserCtrl.collectionError" style="font-weight: bold; color: red;">{{ UserCtrl.collectionError }}</p>
+    <p ng-if="UserCtrl.collectionError" class="text-danger">{{ UserCtrl.collectionError }}</p>
     <div ng-if="UserCtrl.collection.length > 0"
          ng-repeat="release in UserCtrl.collection"
-         class="col-xs-6 col-sm-4 col-md-2">
-        <img ng-src="{{ release.basic_information.thumb }}" height="150" width="150">
-        <div>{{ release.basic_information.artists[0].name.substring(0,15) }}</div>
-        <div>{{ release.basic_information.title.substring(0,15) }}</div>
-        <div></span> {{ release.basic_information.year }}</div>
+         class="user-col-item col-xs-6 col-sm-4 col-md-2">
+        <img ng-src="{{ release.basic_information.thumb }}" class="album-thumb shadow-img">
+        <div class="album-info">
+            <div>{{ release.basic_information.artists[0].name.substring(0,15) }}</div>
+            <div>{{ release.basic_information.title.substring(0,15) }}</div>
+            <div>{{ release.basic_information.year }}</div>
+        </div>
     </div>
 </div>

@@ -1,0 +1,35 @@
+/* User Page */
+
+.user-col-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+}
+
+.user-col-body {
+    padding-top: 10px;
+}
+
+.user-col-item {
+    padding-bottom: 20px;
+}
+
+.user-header-img {
+    height: 100px;
+    width: 100px;
+}
+
+.shadow-img {
+    box-shadow: 1px 1px 10px #ccc;
+    -webkit-box-shadow: 1px 1px 10px #ccc;
+}
+
+.album-thumb {
+    height: 150px;
+    width: 150px;
+}
+
+.album-info {
+    padding-top: 5px;
+}
