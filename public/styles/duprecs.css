@@ -1,3 +1,13 @@
+/* Main Page */
+
+.duprecs-form-control {
+    font-size: 16px;
+}
+
+#main-search-input-group {
+    width: 290px;
+}
+
 /* User Page */
 
 .user-col-header {
