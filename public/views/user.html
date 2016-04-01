@@ -5,14 +5,16 @@
         <img ng-if="UserCtrl.user" ng-src="{{ UserCtrl.user.avatar_url }}" class="user-header-img shadow-img">
     </div>
     <div class="col-xs-6 col-sm-9 col-md-10">
-        <h3 ng-if="!UserCtrl.user && !UserCtrl.userError">finding Discogs user...</h3>
+        <p ng-if="!UserCtrl.user && !UserCtrl.userError">finding Discogs user...</p>
+        <p ng-if="UserCtrl.userError" class="text-danger">{{ UserCtrl.userError }}</p>
         <h3 ng-if="UserCtrl.user">{{ UserCtrl.user.username }}</h3>
-        <h3 ng-if="UserCtrl.userError" class="text-danger">{{ UserCtrl.userError }}</h3>
     </div>
 </div>
 <div class="row user-col-body" ng-if="UserCtrl.user">
-    <p ng-if="UserCtrl.collection.length === 0">fetching {{ UserCtrl.user.username }}'s collection...</p>
-    <p ng-if="UserCtrl.collectionError" class="text-danger">{{ UserCtrl.collectionError }}</p>
+    <div ng-if="UserCtrl.collection.length === 0" class="col-md-6">
+        <p ng-if="!UserCtrl.collectionError">fetching {{ UserCtrl.user.username }}'s collection...</p>
+        <p ng-if="UserCtrl.collectionError" class="text-danger">{{ UserCtrl.collectionError }}</p>
+    </div>
     <div ng-if="UserCtrl.collection.length > 0"
          ng-repeat="release in UserCtrl.collection"
          class="user-col-item col-xs-6 col-sm-4 col-md-2">

@@ -41,7 +41,7 @@ angular.module('duprecsApp')
       };
 
       function onGetUserCollectionError() {
-        vm.collectionError = 'Unable to fetch a collection for Discogs user ' + username + '.';
+        vm.collectionError = 'Unable to fetch a collection for Discogs user ' + username + '. Please try again.';
       };
     }
   ]);
