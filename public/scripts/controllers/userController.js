@@ -17,20 +17,20 @@ angular.module('duprecsApp')
 
       function getUser() {
         UserFactory.getUser(username).then(onGetUserSuccess, onGetUserError);
-      };
+      }
 
       function getUserCollection() {
         UserFactory.getUserCollection(username, page).then(onGetUserCollectionSuccess, onGetUserCollectionError);
-      };
+      }
 
       function onGetUserSuccess(response) {
         vm.user = response.data;
         getUserCollection();
-      };
+      }
 
       function onGetUserError() {
         vm.userError = 'Unable to find a Discogs user matching the username \'' + username + '\'.';
-      };
+      }
 
       function onGetUserCollectionSuccess(response) {
         vm.collection = vm.collection.concat(response.data.releases);
@@ -38,10 +38,10 @@ angular.module('duprecsApp')
           page++;
           getUserCollection();
         }
-      };
+      }
 
       function onGetUserCollectionError() {
         vm.collectionError = 'Unable to fetch a collection for Discogs user ' + username + '. Please try again.';
-      };
+      }
     }
   ]);

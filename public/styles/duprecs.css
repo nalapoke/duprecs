@@ -17,6 +17,10 @@
     padding-bottom: 10px;
 }
 
+.user-col-header-right {
+    padding-left: 20px;
+}
+
 .user-col-body {
     padding-top: 10px;
 }
@@ -42,4 +46,8 @@
 
 .album-info {
     padding-top: 5px;
+}
+
+.user-col-filter-input {
+    width: 220px;
 }
