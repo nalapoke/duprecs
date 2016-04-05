@@ -8,7 +8,7 @@
         <p ng-if="!UserCtrl.user && !UserCtrl.userError">finding Discogs user...</p>
         <p ng-if="UserCtrl.userError" class="text-danger">{{ UserCtrl.userError }}</p>
         <h3 ng-if="UserCtrl.user">{{ UserCtrl.user.username }}</h3>
-        <input ng-if="UserCtrl.user && UserCtrl.collection.length > 0" ng-model="filterText" type="text"
+        <input ng-if="UserCtrl.user && UserCtrl.collection.length > 0" ng-model="UserCtrl.filterText" type="text"
                class="user-col-filter-input form-control" placeholder="filter by artist/album">
     </div>
 </div>
@@ -18,7 +18,7 @@
         <p ng-if="UserCtrl.collectionError" class="text-danger">{{ UserCtrl.collectionError }}</p>
     </div>
     <div ng-if="UserCtrl.collection.length > 0"
-         ng-repeat="release in UserCtrl.collection | ReleaseFilter:filterText"
+         ng-repeat="release in UserCtrl.collection | ReleaseFilter:UserCtrl.filterText"
          class="user-col-item col-xs-6 col-sm-3 col-md-2">
         <img ng-src="{{ release.basic_information.thumb }}" class="album-thumb shadow-img">
         <div class="album-info">
