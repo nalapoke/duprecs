@@ -1,7 +1,7 @@
 /* Main Page */
 
 .duprecs-form-control {
-    font-size: 16px;
+    font-size: 16px !important;
 }
 
 #main-search-input-group {
