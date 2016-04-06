@@ -34,7 +34,8 @@ angular.module('duprecsApp')
       }
 
       function onGetUserCollectionSuccess(response) {
-        vm.collection = vm.collection.concat(response.data.releases);
+        var formattedCollectionData = formatCollectionData(response.data.releases);
+        vm.collection = vm.collection.concat(formattedCollectionData);
         if (page < response.data.pagination.pages) {
           page++;
           getUserCollection();
@@ -43,6 +44,20 @@ angular.module('duprecsApp')
 
       function onGetUserCollectionError() {
         vm.collectionError = 'Unable to fetch a collection for Discogs user ' + username + '. Please try again.';
+      }
+
+      function formatCollectionData(collectionData) {
+        return collectionData.map(formatReleaseData);
+      }
+
+      function formatReleaseData(release) {
+        release.basic_information.artists = release.basic_information.artists.map(formatArtistData);
+        return release;
+      }
+
+      function formatArtistData(artist) {
+        artist.name = artist.name.replace(/^(.+)(\s\(\d+\))$/, '$1');
+        return artist;
       }
     }
   ]);
