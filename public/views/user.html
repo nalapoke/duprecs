@@ -12,14 +12,14 @@
                class="user-col-filter-input form-control" placeholder="filter by artist/album">
     </div>
 </div>
-<div class="row user-col-body" ng-if="UserCtrl.user">
-    <div ng-if="UserCtrl.collection.length === 0" class="col-md-6">
+<div class="user-col-body" ng-if="UserCtrl.user">
+    <div ng-if="UserCtrl.collection.length === 0">
         <p ng-if="!UserCtrl.collectionError">fetching {{ UserCtrl.user.username }}'s collection...</p>
         <p ng-if="UserCtrl.collectionError" class="text-danger">{{ UserCtrl.collectionError }}</p>
     </div>
     <div ng-if="UserCtrl.collection.length > 0"
-         ng-repeat="release in UserCtrl.collection | ReleaseFilter:UserCtrl.filterText"
-         class="user-col-item col-xs-6 col-sm-3 col-md-2">
+         ng-repeat="release in UserCtrl.collection | ReleaseFilter:UserCtrl.filterText track by $index"
+         class="user-col-release pull-left">
         <img ng-src="{{ release.basic_information.thumb }}" class="album-thumb shadow-img">
         <div class="album-info">
             <div>{{ release.basic_information.artists[0].name.substring(0,15) }}</div>
