@@ -9,6 +9,7 @@ angular.module('duprecsApp')
       vm.collection = [];
       vm.userError = null;
       vm.collectionError = null;
+      vm.maxTitleAndArtistLength = 18;
 
       var username = $routeParams.username;
       var page = 1;
