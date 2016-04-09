@@ -35,3 +35,13 @@ public/bower_components
 
 # IntelliJ IDEA project files
 .idea
+
+# Public .js and .js.map files
+public/*.js
+public/*.js.map
+
+# Public vendor folder (created by gulp build task)
+public/vendor
+
+# Type files
+typings

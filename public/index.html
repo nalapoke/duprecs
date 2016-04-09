@@ -4,13 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Duprecs</title>
+    <base href="/">
 
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="styles/duprecs.css" />
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="styles/duprecs.css"/>
+
+    <!-- IE required polyfills, in this exact order -->
+    <script src="es6-shim/es6-shim.min.js"></script>
+    <script src="systemjs/dist/system-polyfills.js"></script>
+    <script src="angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+    <script src="angular2/bundles/angular2-polyfills.js"></script>
+    <script src="systemjs/dist/system.src.js"></script>
+    <script src="rxjs/bundles/Rx.js"></script>
+    <script src="angular2/bundles/angular2.dev.js"></script>
+    <script src="angular2/bundles/http.dev.js"></script>
+    <script src="angular2/bundles/router.dev.js"></script>
+    <script>
+        System.config({
+            defaultJSExtensions: true,
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtensions: 'js'
+                }
+            }
+        });
+        System.import('main')
+                .then(null, console.error.bind(console));
+    </script>
 </head>
 <body>
-    <div class="container"></div>
+    <dr-app></dr-app>
 
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>

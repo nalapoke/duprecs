@@ -134,12 +134,4 @@ router.get('/api/v1/users/:username/collection/folders/:folder_id/releases',
     );
   });
 
-//-------------------------------------
-//      Default catch-all route
-//-------------------------------------
-
-router.get('*', function (req, res) {
-  res.sendFile(__dirname + 'public/index.html');
-});
-
 module.exports = router;
