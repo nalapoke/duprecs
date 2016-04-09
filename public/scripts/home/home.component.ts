@@ -4,5 +4,5 @@ import { Component } from 'angular2/core';
   templateUrl: 'scripts/home/home.html'
 })
 export class HomeComponent {
-  public mainText: string = "The app.";
+  public homeText: string = "Home";
 }

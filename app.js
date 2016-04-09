@@ -12,7 +12,7 @@ var routes = require('./app/routes');
 
 var app = express();
 
-app.use(express.static("./node_modules"));
+app.use(express.static('./node_modules'));
 app.use(express.static('./public'));
 
 // uncomment after placing your favicon in /public
