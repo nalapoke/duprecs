@@ -16,7 +16,8 @@ import { UserCollectionComponent } from './userCollection/userCollection.compone
 })
 @RouteConfig([
   { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
-  { path: '/user/:id', name: 'UserCollection', component: UserCollectionComponent }
+  { path: '/user/:id', name: 'UserCollection', component: UserCollectionComponent },
+  { path: '/**', redirectTo: ['Home'] }
 ])
 export class AppComponent {
 
