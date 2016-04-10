@@ -3,13 +3,14 @@ import { RouteParams } from 'angular2/router';
 
 import { UserService } from './user.service';
 import { ReleaseFilterPipe } from './releaseFilter.pipe'
+import { TruncateFilterPipe } from './truncateFilter.pipe'
 import { IUser } from './interfaces/user';
 import { IUserCollection } from './interfaces/userCollection';
 import { IRelease } from './interfaces/release';
 
 @Component({
   templateUrl: 'scripts/userCollection/userCollection.html',
-  pipes: [ReleaseFilterPipe]
+  pipes: [ReleaseFilterPipe, TruncateFilterPipe]
 })
 export class UserCollectionComponent implements OnInit{
   private _pageNumber: number = 1;
@@ -19,6 +20,7 @@ export class UserCollectionComponent implements OnInit{
   userCollection: IRelease[] = [];
   userError: string;
   userCollectionError: string;
+  maxTitleAndArtistLength: number = 18;
 
   constructor(
     private _userService: UserService,
