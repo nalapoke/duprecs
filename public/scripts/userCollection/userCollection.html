@@ -18,7 +18,7 @@
         <p *ngIf="userCollectionError" class="text-danger">{{ userCollectionError }}</p>
     </div>
     <div *ngIf="userCollection.length > 0">
-        <div *ngFor="#release of userCollection"
+        <div *ngFor="#release of userCollection | releaseFilter:filterText"
              class="user-col-release pull-left">
             <img [src]="release.basic_information.thumb" class="album-thumb shadow-img">
             <div class="album-info">

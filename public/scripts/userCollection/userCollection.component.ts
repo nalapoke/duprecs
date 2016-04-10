@@ -2,12 +2,14 @@ import { Component, OnInit } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 
 import { UserService } from './user.service';
+import { ReleaseFilterPipe } from './releaseFilter.pipe'
 import { IUser } from './interfaces/user';
 import { IUserCollection } from './interfaces/userCollection';
 import { IRelease } from './interfaces/release';
 
 @Component({
-  templateUrl: 'scripts/userCollection/userCollection.html'
+  templateUrl: 'scripts/userCollection/userCollection.html',
+  pipes: [ReleaseFilterPipe]
 })
 export class UserCollectionComponent implements OnInit{
   private _pageNumber: number = 1;
