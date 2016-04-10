@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Duprecs</title>
-    <base href="/">
 
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="styles/duprecs.css"/>
@@ -19,24 +19,21 @@
     <script src="angular2/bundles/angular2.dev.js"></script>
     <script src="angular2/bundles/http.dev.js"></script>
     <script src="angular2/bundles/router.dev.js"></script>
+
     <script>
         System.config({
-            defaultJSExtensions: true,
             packages: {
-                app: {
+                scripts: {
                     format: 'register',
-                    defaultExtensions: 'js'
+                    defaultExtension: 'js'
                 }
             }
         });
-        System.import('main')
+        System.import('scripts/main')
                 .then(null, console.error.bind(console));
     </script>
 </head>
 <body>
     <dr-app></dr-app>
-
-    <script src="jquery/dist/jquery.min.js"></script>
-    <script src="bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>
