@@ -7,6 +7,7 @@ import { TruncateFilterPipe } from './truncateFilter.pipe'
 import { IUser } from './interfaces/user';
 import { IUserCollection } from './interfaces/userCollection';
 import { IRelease } from './interfaces/release';
+import { IArtist } from './interfaces/artist';
 
 @Component({
   templateUrl: 'scripts/userCollection/userCollection.html',
@@ -43,7 +44,8 @@ export class UserCollectionComponent implements OnInit{
     this._userService.getUserCollection(this.username, this._pageNumber)
       .subscribe(
         (userCollection: IUserCollection) => {
-          this.userCollection = this.userCollection.concat(userCollection.releases);
+          let formattedCollectionData = formatCollectionData(userCollection.releases);
+          this.userCollection = this.userCollection.concat(formattedCollectionData);
           if (this._pageNumber < userCollection.pagination.pages) {
             this._pageNumber++;
             this.getUserCollection();
@@ -52,4 +54,18 @@ export class UserCollectionComponent implements OnInit{
         () => this.userCollectionError =
           'Unable to fetch a collection for Discogs user \'' + this.username + '\'. Please try again.');
   }
+}
+
+function formatCollectionData(collectionData: IRelease[]): IRelease[] {
+  return collectionData.map(formatReleaseData);
+}
+
+function formatReleaseData(release: IRelease): IRelease {
+  release.basic_information.artists = release.basic_information.artists.map(formatArtistData);
+  return release;
+}
+
+function formatArtistData(artist: IArtist): IArtist {
+  artist.name = artist.name.replace(/^(.+)(\s\(\d+\))$/, '$1');
+  return artist;
 }
