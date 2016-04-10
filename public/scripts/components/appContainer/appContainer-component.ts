@@ -2,10 +2,10 @@ import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import 'rxjs/Rx';   // Load all features
 
-import { NavbarComponent } from '../navbar/navbar.component';
-import { HomeComponent } from '../home/home.component';
-import { UserCollectionComponent } from '../userCollection/userCollection.component';
-import { UserService } from '../../services/user.service';
+import { NavbarComponent } from '../navbar/navbar-component';
+import { HomeComponent } from '../home/home-component';
+import { UserCollectionComponent } from '../userCollection/userCollection-component';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'dr-app',

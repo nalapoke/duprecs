@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { UserService } from '../../services/user.service';
-import { ReleaseFilterPipe } from '../../pipes/releaseFilter.pipe'
-import { TruncateFilterPipe } from '../../pipes/truncateFilter.pipe'
+import { UserService } from '../../services/user-service';
+import { ReleaseFilterPipe } from '../../pipes/releaseFilter-pipe'
+import { TruncateFilterPipe } from '../../pipes/truncateFilter-pipe'
 import { IUser } from '../../models/user';
 import { IUserCollection } from '../../models/userCollection';
 import { IRelease } from '../../models/release';

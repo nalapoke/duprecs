@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"tsc -w\" \"node ./bin/www\"",
-    "postinstall": "typings install && tsc"
+    "postinstall": "typings install && tsc",
+    "test": "live-server --open=./public/unit-tests.html"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.14",
@@ -28,5 +29,8 @@
     "typescript": "^1.8.9",
     "typings": "^0.7.12",
     "concurrently": "^2.0.0"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1"
   }
 }
