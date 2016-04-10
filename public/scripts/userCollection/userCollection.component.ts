@@ -1,5 +1,6 @@
-import { Component, OnInit } from 'angular2/core';
+import { Component, OnInit, OnDestroy } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { UserService } from './user.service';
 import { ReleaseFilterPipe } from './releaseFilter.pipe'
@@ -13,8 +14,10 @@ import { IArtist } from './interfaces/artist';
   templateUrl: 'scripts/userCollection/userCollection.html',
   pipes: [ReleaseFilterPipe, TruncateFilterPipe]
 })
-export class UserCollectionComponent implements OnInit{
+export class UserCollectionComponent implements OnInit, OnDestroy{
   private _pageNumber: number = 1;
+  private _userSubscription: Subscription;
+  private _userCollectionSubscription: Subscription;
 
   username: string;
   user: IUser;
@@ -30,7 +33,21 @@ export class UserCollectionComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this._userService.getUser(this.username)
+    this.getUser();
+  }
+
+  ngOnDestroy(): void {
+    if (this._userSubscription) {
+      this._userSubscription.unsubscribe();
+    }
+
+    if (this._userCollectionSubscription) {
+      this._userCollectionSubscription.unsubscribe();
+    }
+  }
+
+  getUser(): void {
+    this._userSubscription = this._userService.getUser(this.username)
       .subscribe(
         (user: IUser) => {
           this.user = user;
@@ -41,7 +58,7 @@ export class UserCollectionComponent implements OnInit{
   }
 
   getUserCollection(): void {
-    this._userService.getUserCollection(this.username, this._pageNumber)
+    this._userCollectionSubscription = this._userService.getUserCollection(this.username, this._pageNumber)
       .subscribe(
         (userCollection: IUserCollection) => {
           let formattedCollectionData = formatCollectionData(userCollection.releases);
