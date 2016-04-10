@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Duprecs</title>
 
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="styles/duprecs.css" />
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="styles/duprecs.css"/>
+
+    <!-- IE required polyfills, in this exact order -->
+    <script src="es6-shim/es6-shim.min.js"></script>
+    <script src="systemjs/dist/system-polyfills.js"></script>
+    <script src="angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+    <script src="angular2/bundles/angular2-polyfills.js"></script>
+    <script src="systemjs/dist/system.src.js"></script>
+    <script src="rxjs/bundles/Rx.js"></script>
+    <script src="angular2/bundles/angular2.dev.js"></script>
+    <script src="angular2/bundles/http.dev.js"></script>
+    <script src="angular2/bundles/router.dev.js"></script>
+
+    <script>
+        System.config({
+            packages: {
+                scripts: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('scripts/main')
+                .then(null, console.error.bind(console));
+    </script>
 </head>
-<body ng-app="duprecsApp">
-    <dr-navbar></dr-navbar>
-    <div class="container">
-        <div ng-view></div>
-    </div>
-
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
-    <script src="scripts/duprecsApp.js"></script>
-    <script src="scripts/providers/userFactory.js"></script>
-    <script src="scripts/filters/releaseFilter.js"></script>
-    <script src="scripts/filters/truncateFilter.js"></script>
-    <script src="scripts/directives/navbar.js"></script>
-    <script src="scripts/controllers/mainController.js"></script>
-    <script src="scripts/controllers/navbarController.js"></script>
-    <script src="scripts/controllers/userController.js"></script>
-    <script src="scripts/routes.js"></script>
+<body>
+    <dr-app></dr-app>
 </body>
 </html>

@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var Discogs = require('disconnect').Client;
 var router = express.Router();
 
@@ -134,12 +135,9 @@ router.get('/api/v1/users/:username/collection/folders/:folder_id/releases',
     );
   });
 
-//-------------------------------------
-//      Default catch-all route
-//-------------------------------------
-
-router.get('*', function (req, res) {
-  res.sendFile(__dirname + 'public/index.html');
+router.get('*', function(req, res) {
+  res.sendFile(path.resolve('./public/index.html'));
 });
+
 
 module.exports = router;
