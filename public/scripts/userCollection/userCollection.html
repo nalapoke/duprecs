@@ -1,1 +1,31 @@
-<div>{{username}}</div>
+<div class="user-col-header">
+    <div class="user-col-header-left pull-left">
+        <img *ngIf="!user && !userError" class="user-header-img" src="../../images/vinyl_spinner.gif">
+        <img *ngIf="userError" class="user-header-img" src="../../images/vinyl_broken.gif">
+        <img *ngIf="user" [src]="user.avatar_url" class="user-header-img shadow-img">
+    </div>
+    <div class="user-col-header-right pull-left">
+        <p *ngIf="!user && !userError">finding Discogs user...</p>
+        <p *ngIf="userError" class="text-danger">{{ userError }}</p>
+        <h3 *ngIf="user">{{ user.username }}</h3>
+        <input *ngIf="user && userCollection.length > 0" [(ngModel)]="filterText" type="text"
+               class="user-col-filter-input form-control" placeholder="filter by artist/album">
+    </div>
+</div>
+<div class="user-col-body" *ngIf="user">
+    <div *ngIf="userCollection.length === 0">
+        <p *ngIf="!userCollectionError">fetching {{ user.username }}'s collection...</p>
+        <p *ngIf="userCollectionError" class="text-danger">{{ userCollectionError }}</p>
+    </div>
+    <div *ngIf="userCollection.length > 0">
+        <div *ngFor="#release of userCollection"
+             class="user-col-release pull-left">
+            <img [src]="release.basic_information.thumb" class="album-thumb shadow-img">
+            <div class="album-info">
+                <div>{{ release.basic_information.artists[0].name.substring(0,15) }}</div>
+                <div>{{ release.basic_information.title.substring(0,15) }}</div>
+                <div>{{ release.basic_information.year }}</div>
+            </div>
+        </div>
+    </div>
+</div>
