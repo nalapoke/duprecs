@@ -26,9 +26,7 @@
     "systemjs": "0.19.25",
     "zone.js": "0.6.6",
     "typescript": "^1.8.9",
-    "typings": "^0.7.12"
-  },
-  "devDependencies": {
+    "typings": "^0.7.12",
     "concurrently": "^2.0.0"
   }
 }
