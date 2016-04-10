@@ -2,7 +2,7 @@ import { Component } from 'angular2/core';
 import { Router } from 'angular2/router';
 
 @Component({
-  templateUrl: 'scripts/home/home.html'
+  templateUrl: 'scripts/components/home/home.html'
 })
 export class HomeComponent {
   public searchUsername: string = "";

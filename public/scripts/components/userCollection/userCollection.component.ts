@@ -2,16 +2,16 @@ import { Component, OnInit, OnDestroy } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { UserService } from './user.service';
-import { ReleaseFilterPipe } from './releaseFilter.pipe'
-import { TruncateFilterPipe } from './truncateFilter.pipe'
-import { IUser } from './interfaces/user';
-import { IUserCollection } from './interfaces/userCollection';
-import { IRelease } from './interfaces/release';
-import { IArtist } from './interfaces/artist';
+import { UserService } from '../../services/user.service';
+import { ReleaseFilterPipe } from '../../pipes/releaseFilter.pipe'
+import { TruncateFilterPipe } from '../../pipes/truncateFilter.pipe'
+import { IUser } from '../../models/user';
+import { IUserCollection } from '../../models/userCollection';
+import { IRelease } from '../../models/release';
+import { IArtist } from '../../models/artist';
 
 @Component({
-  templateUrl: 'scripts/userCollection/userCollection.html',
+  templateUrl: 'scripts/components/userCollection/userCollection.html',
   pipes: [ReleaseFilterPipe, TruncateFilterPipe]
 })
 export class UserCollectionComponent implements OnInit, OnDestroy{

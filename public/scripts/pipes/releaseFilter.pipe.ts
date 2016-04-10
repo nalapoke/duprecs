@@ -1,6 +1,6 @@
 import { PipeTransform, Pipe } from 'angular2/core';
-import { IRelease } from './interfaces/release';
-import { IArtist } from './interfaces/artist';
+import { IRelease } from '../models/release';
+import { IArtist } from '../models/artist';
 
 @Pipe({
   name: 'releaseFilter'

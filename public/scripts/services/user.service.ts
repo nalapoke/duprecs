@@ -2,8 +2,8 @@ import { Injectable } from 'angular2/core';
 import { Http, Response } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
 
-import { IUser } from './interfaces/user';
-import { IUserCollection } from './interfaces/userCollection';
+import { IUser } from '../models/user';
+import { IUserCollection } from '../models/userCollection';
 
 @Injectable()
 export class UserService {
