@@ -9,7 +9,8 @@
         <p *ngIf="userError" class="text-danger">{{ userError }}</p>
         <h3 *ngIf="user">{{ user.username }}</h3>
         <input *ngIf="user && userCollection.length > 0" [(ngModel)]="filterText" type="text"
-               class="user-col-filter-input form-control" placeholder="find an artist or album">
+               class="user-col-filter-input form-control duprecs-form-control"
+               placeholder="find a release">
     </div>
 </div>
 <div class="user-col-body" *ngIf="user">
