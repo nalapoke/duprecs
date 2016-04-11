@@ -3,8 +3,7 @@ import { RouteParams } from 'angular2/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserService } from '../../services/user-service';
-import { ReleaseFilterPipe } from '../../pipes/releaseFilter-pipe'
-import { TruncateFilterPipe } from '../../pipes/truncateFilter-pipe'
+import { GridViewComponent } from './gridView/gridView-component';
 import { IUser } from '../../models/user';
 import { IUserCollection } from '../../models/userCollection';
 import { IRelease } from '../../models/release';
@@ -12,7 +11,7 @@ import { IArtist } from '../../models/artist';
 
 @Component({
   templateUrl: 'scripts/components/userCollection/userCollection.html',
-  pipes: [ReleaseFilterPipe, TruncateFilterPipe]
+  directives: [GridViewComponent]
 })
 export class UserCollectionComponent implements OnInit, OnDestroy{
   private _pageNumber: number = 1;
@@ -24,7 +23,6 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
   userCollection: IRelease[] = [];
   userError: string;
   userCollectionError: string;
-  maxTitleAndArtistLength: number = 18;
   viewTypes = ViewType;
   currentViewType: ViewType;
 

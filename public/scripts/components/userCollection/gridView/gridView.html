@@ -1,0 +1,9 @@
+<div *ngFor="#release of userCollection | releaseFilter:filterText"
+     class="user-col-release pull-left">
+    <img [src]="release.basic_information.thumb" class="album-thumb shadow-img">
+    <div class="album-info">
+        <div>{{ release.basic_information.artists[0].name | truncateFilter:maxTitleAndArtistLength }}</div>
+        <div>{{ release.basic_information.title | truncateFilter:maxTitleAndArtistLength }}</div>
+        <div>{{ release.basic_information.year }}</div>
+    </div>
+</div>
