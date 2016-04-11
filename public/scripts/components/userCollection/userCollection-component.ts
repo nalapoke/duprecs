@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { UserService } from '../../services/user-service';
 import { GridViewComponent } from './gridView/gridView-component';
+import { ListViewComponent } from './listView/listView-component';
 import { IUser } from '../../models/user';
 import { IUserCollection } from '../../models/userCollection';
 import { IRelease } from '../../models/release';
@@ -11,7 +12,7 @@ import { IArtist } from '../../models/artist';
 
 @Component({
   templateUrl: 'scripts/components/userCollection/userCollection.html',
-  directives: [GridViewComponent]
+  directives: [GridViewComponent, ListViewComponent]
 })
 export class UserCollectionComponent implements OnInit, OnDestroy{
   private _pageNumber: number = 1;

@@ -36,5 +36,8 @@
         <dr-grid-view *ngIf="currentViewType === viewTypes.Grid"
                       [userCollection]="userCollection"
                       [filterText]="filterText"></dr-grid-view>
+        <dr-list-view *ngIf="currentViewType === viewTypes.List"
+                      [userCollection]="userCollection"
+                      [filterText]="filterText"></dr-list-view>
     </div>
 </div>
