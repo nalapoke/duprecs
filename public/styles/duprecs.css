@@ -32,8 +32,14 @@
     padding-top: 10px;
 }
 
-.user-col-release {
+.grid-release-item {
     padding: 0 10px 20px 0;
+}
+
+.list-release-item {
+    padding: 5px 0 5px 25px;
+    text-indent: -15px;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .user-header-img {
