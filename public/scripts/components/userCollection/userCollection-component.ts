@@ -25,11 +25,14 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
   userError: string;
   userCollectionError: string;
   maxTitleAndArtistLength: number = 18;
+  viewTypes = ViewType;
+  currentViewType: ViewType;
 
   constructor(
     private _userService: UserService,
     routeParams: RouteParams) {
     this.username = routeParams.get('username');
+    this.currentViewType = ViewType.Grid;
   }
 
   ngOnInit(): void {
@@ -71,6 +74,17 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
         () => this.userCollectionError =
           'Unable to fetch a collection for Discogs user \'' + this.username + '\'. Please try again.');
   }
+
+  onViewButtonClicked(viewTypeSelected: ViewType): void {
+    if (this.currentViewType !== viewTypeSelected) {
+      this.currentViewType = viewTypeSelected;
+    }
+  }
+}
+
+enum ViewType {
+  Grid,
+  List
 }
 
 function formatCollectionData(collectionData: IRelease[]): IRelease[] {

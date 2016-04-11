@@ -8,9 +8,23 @@
         <p *ngIf="!user && !userError">finding Discogs user...</p>
         <p *ngIf="userError" class="text-danger">{{ userError }}</p>
         <h3 *ngIf="user">{{ user.username }}</h3>
-        <input *ngIf="user && userCollection.length > 0" [(ngModel)]="filterText" type="text"
-               class="user-col-filter-input form-control duprecs-form-control"
-               placeholder="find a release">
+    </div>
+</div>
+<div *ngIf="user && userCollection.length > 0" class="user-col-toolbar">
+    <div class="pull-left">
+        <input [(ngModel)]="filterText" type="text"
+           class="user-col-filter-input form-control duprecs-form-control"
+           placeholder="find a release">
+    </div>
+    <div class="btn-group pull-left" role="group">
+        <button type="button" class="btn btn-default" (click)="onViewButtonClicked(viewTypes.Grid)"
+                [ngClass]="{ active: currentViewType === viewTypes.Grid }">
+            <span class="glyphicon glyphicon-th-large"></span>
+        </button>
+        <button type="button" class="btn btn-default" (click)="onViewButtonClicked(viewTypes.List)"
+                [ngClass]="{ active: currentViewType === viewTypes.List }">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </button>
     </div>
 </div>
 <div class="user-col-body" *ngIf="user">
