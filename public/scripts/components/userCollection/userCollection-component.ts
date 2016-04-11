@@ -23,6 +23,7 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
   userCollection: IRelease[] = [];
   userError: string;
   userCollectionError: string;
+  filterText: string;
   viewTypes = ViewType;
   currentViewType: ViewType;
 

@@ -11,5 +11,6 @@ import { IRelease } from '../../../models/release';
 })
 export class GridViewComponent {
   @Input() userCollection: IRelease[];
+  @Input() filterText: string;
   maxTitleAndArtistLength: number = 18;
 }
