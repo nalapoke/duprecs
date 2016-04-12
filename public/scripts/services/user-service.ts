@@ -17,10 +17,11 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  getUserCollection(username: string, page: number): Observable<IUserCollection> {
-    return this._http.get(this._userUrl + username + '/collection/folders/0/releases?per_page=50&page=' + page)
-      .map((response: Response) => <IUserCollection>response.json())
-      .catch(this.handleError);
+  getUserCollection(username: string, page: number, sort: string, sortOrder: string): Observable<IUserCollection> {
+    return this._http.get(this._userUrl + username + '/collection/folders/0/releases?&per_page=50&page='
+      + page + '&sort=' + sort + '&sort_order=' + sortOrder)
+        .map((response: Response) => <IUserCollection>response.json())
+        .catch(this.handleError);
   }
 
   private handleError(error: Response) {

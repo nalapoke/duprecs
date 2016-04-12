@@ -117,15 +117,17 @@ router.get('/api/v1/users/:username',
 
 router.get('/api/v1/users/:username/collection/folders/:folder_id/releases',
   function (req, res) {
-    var pagination = {
+    var params = {
       page: req.query.page || 1,
-      per_page: req.query.per_page || 50
+      per_page: req.query.per_page || 50,
+      sort: req.query.sort || 'artist',
+      sort_order: req.query.sort_order || 'asc'
     };
     var discCollection = new Discogs(getUserAgent(), discogsAuthRequestData).user().collection();
     discCollection.releases(
         req.params.username,
         req.params.folder_id,
-        pagination,
+        params,
         function (err, data) {
           if (err) {
             return handleError(err, res);

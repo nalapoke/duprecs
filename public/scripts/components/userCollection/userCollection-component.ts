@@ -27,12 +27,16 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
   filterText: string;
   viewTypes = ViewType;
   currentViewType: ViewType;
+  currentSortType: SortType;
+  currentSortOrderType: SortOrderType;
 
   constructor(
     private _userService: UserService,
     routeParams: RouteParams) {
     this.username = routeParams.get('username');
     this.currentViewType = ViewType.Grid;
+    this.currentSortType = SortType.artist;
+    this.currentSortOrderType = SortOrderType.asc;
   }
 
   ngOnInit(): void {
@@ -61,18 +65,22 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
   }
 
   getUserCollection(): void {
-    this._userCollectionSubscription = this._userService.getUserCollection(this.username, this._pageNumber)
-      .subscribe(
-        (userCollection: IUserCollection) => {
-          let formattedCollectionData = formatCollectionData(userCollection.releases);
-          this.userCollection = this.userCollection.concat(formattedCollectionData);
-          if (this._pageNumber < userCollection.pagination.pages) {
-            this._pageNumber++;
-            this.getUserCollection();
-          }
-        },
-        () => this.userCollectionError =
-          'Unable to fetch a collection for Discogs user \'' + this.username + '\'. Please try again.');
+    this._userCollectionSubscription = this._userService.getUserCollection(
+      this.username,
+      this._pageNumber,
+      SortType[this.currentSortType],
+      SortOrderType[this.currentSortOrderType])
+        .subscribe(
+          (userCollection: IUserCollection) => {
+            let formattedCollectionData = formatCollectionData(userCollection.releases);
+            this.userCollection = this.userCollection.concat(formattedCollectionData);
+            if (this._pageNumber < userCollection.pagination.pages) {
+              this._pageNumber++;
+              this.getUserCollection();
+            }
+          },
+          () => this.userCollectionError =
+            'Unable to fetch a collection for Discogs user \'' + this.username + '\'. Please try again.');
   }
 
   onViewButtonClicked(viewTypeSelected: ViewType): void {
@@ -85,6 +93,18 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
 enum ViewType {
   Grid,
   List
+}
+
+enum SortType {
+  artist,
+  title,
+  year,
+  added
+}
+
+enum SortOrderType {
+  asc,
+  desc
 }
 
 function formatCollectionData(collectionData: IRelease[]): IRelease[] {
