@@ -137,6 +137,31 @@ router.get('/api/v1/users/:username/collection/folders/:folder_id/releases',
     );
   });
 
+//-------------------------------------
+//        Discogs Collections
+//-------------------------------------
+
+router.get('/api/v1/users/:username/wantlist',
+  function (req, res) {
+    var params = {
+      page: req.query.page || 1,
+      per_page: req.query.per_page || 50,
+      sort: req.query.sort || 'artist',
+      sort_order: req.query.sort_order || 'asc'
+    };
+    var discCollection = new Discogs(getUserAgent(), discogsAuthRequestData).user().wantlist();
+    discCollection.releases(
+      req.params.username,
+      params,
+      function (err, data) {
+        if (err) {
+          return handleError(err, res);
+        }
+        res.send(data);
+      }
+    );
+  });
+
 router.get('*', function(req, res) {
   res.sendFile(path.resolve('./public/index.html'));
 });
