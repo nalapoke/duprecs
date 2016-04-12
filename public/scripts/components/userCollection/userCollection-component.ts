@@ -9,6 +9,9 @@ import { IUser } from '../../models/user';
 import { IUserCollection } from '../../models/userCollection';
 import { IRelease } from '../../models/release';
 import { IArtist } from '../../models/artist';
+import { ViewType } from '../../models/viewType';
+import { SortType } from '../../models/sortType';
+import { SortOrderType } from '../../models/sortOrderType';
 
 @Component({
   templateUrl: 'scripts/components/userCollection/userCollection.html',
@@ -34,7 +37,7 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
     private _userService: UserService,
     routeParams: RouteParams) {
     this.username = routeParams.get('username');
-    this.currentViewType = ViewType.Grid;
+    this.currentViewType = ViewType.grid;
     this.currentSortType = SortType.artist;
     this.currentSortOrderType = SortOrderType.asc;
   }
@@ -68,8 +71,8 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
     this._userCollectionSubscription = this._userService.getUserCollection(
       this.username,
       this._pageNumber,
-      SortType[this.currentSortType],
-      SortOrderType[this.currentSortOrderType])
+      this.currentSortType,
+      this.currentSortOrderType)
         .subscribe(
           (userCollection: IUserCollection) => {
             let formattedCollectionData = formatCollectionData(userCollection.releases);
@@ -88,23 +91,6 @@ export class UserCollectionComponent implements OnInit, OnDestroy{
       this.currentViewType = viewTypeSelected;
     }
   }
-}
-
-enum ViewType {
-  Grid,
-  List
-}
-
-enum SortType {
-  artist,
-  title,
-  year,
-  added
-}
-
-enum SortOrderType {
-  asc,
-  desc
 }
 
 function formatCollectionData(collectionData: IRelease[]): IRelease[] {

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { IUser } from '../models/user';
 import { IUserCollection } from '../models/userCollection';
+import { SortType } from '../models/sortType';
+import { SortOrderType } from '../models/sortOrderType';
 
 @Injectable()
 export class UserService {
@@ -17,9 +19,9 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  getUserCollection(username: string, page: number, sort: string, sortOrder: string): Observable<IUserCollection> {
+  getUserCollection(username: string, page: number, sortType: SortType, sortOrderType: SortOrderType): Observable<IUserCollection> {
     return this._http.get(this._userUrl + username + '/collection/folders/0/releases?&per_page=50&page='
-      + page + '&sort=' + sort + '&sort_order=' + sortOrder)
+      + page + '&sort=' + SortType[sortType] + '&sort_order=' + SortOrderType[sortOrderType])
         .map((response: Response) => <IUserCollection>response.json())
         .catch(this.handleError);
   }

@@ -17,12 +17,12 @@
            placeholder="find a release">
     </div>
     <div class="btn-group pull-left" role="group">
-        <button type="button" class="btn btn-default" (click)="onViewButtonClicked(viewTypes.Grid)"
-                [ngClass]="{ active: currentViewType === viewTypes.Grid }">
+        <button type="button" class="btn btn-default" (click)="onViewButtonClicked(viewTypes.grid)"
+                [ngClass]="{ active: currentViewType === viewTypes.grid }">
             <span class="glyphicon glyphicon-th-large"></span>
         </button>
-        <button type="button" class="btn btn-default" (click)="onViewButtonClicked(viewTypes.List)"
-                [ngClass]="{ active: currentViewType === viewTypes.List }">
+        <button type="button" class="btn btn-default" (click)="onViewButtonClicked(viewTypes.list)"
+                [ngClass]="{ active: currentViewType === viewTypes.list }">
             <span class="glyphicon glyphicon-th-list"></span>
         </button>
     </div>
@@ -33,10 +33,10 @@
         <p *ngIf="userCollectionError" class="text-danger">{{ userCollectionError }}</p>
     </div>
     <div *ngIf="userCollection.length > 0">
-        <dr-grid-view *ngIf="currentViewType === viewTypes.Grid"
+        <dr-grid-view *ngIf="currentViewType === viewTypes.grid"
                       [userCollection]="userCollection"
                       [filterText]="filterText"></dr-grid-view>
-        <dr-list-view *ngIf="currentViewType === viewTypes.List"
+        <dr-list-view *ngIf="currentViewType === viewTypes.list"
                       [userCollection]="userCollection"
                       [filterText]="filterText"></dr-list-view>
     </div>
