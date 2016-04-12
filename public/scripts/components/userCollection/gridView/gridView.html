@@ -1,9 +1,13 @@
-<div *ngFor="#release of userCollection | releaseFilter:filterText"
-     class="grid-release-item pull-left">
-    <img [src]="release.basic_information.thumb" class="album-thumb shadow-img">
-    <div class="album-info">
-        <div>{{ release.basic_information.artists[0].name | truncateFilter:maxTitleAndArtistLength }}</div>
-        <div>{{ release.basic_information.title | truncateFilter:maxTitleAndArtistLength }}</div>
-        <div>{{ release.basic_information.year }}</div>
+<div class="row">
+    <div *ngFor="#release of userCollection | releaseFilter:filterText"
+         class="grid-release-item col-xs-6 col-sm-3 col-md-2 col-lg-2">
+        <div class="grid-release-item-details">
+            <img [src]="release.basic_information.thumb" class="album-thumb shadow-img">
+            <div class="album-info">
+                <div>{{ release.basic_information.artists[0].name | truncateFilter:maxTitleAndArtistLength }}</div>
+                <div>{{ release.basic_information.title | truncateFilter:maxTitleAndArtistLength }}</div>
+                <div>{{ release.basic_information.year }}</div>
+            </div>
+        </div>
     </div>
 </div>

@@ -7,7 +7,10 @@
     <div class="user-col-header-right pull-left">
         <p *ngIf="!user && !userError">finding Discogs user...</p>
         <p *ngIf="userError" class="text-danger">{{ userError }}</p>
-        <h3 *ngIf="user">{{ user.username }}</h3>
+        <div *ngIf="user">
+            <div class="user-col-header-username">{{ user.username }}</div>
+            <div class="user-col-header-stats">has: {{ user.num_collection }} | wants: {{ user.num_wantlist }}</div>
+        </div>
     </div>
 </div>
 <div *ngIf="user && userCollection.length > 0" class="user-col-toolbar">

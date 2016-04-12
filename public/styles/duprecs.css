@@ -28,12 +28,27 @@
     padding-left: 15px;
 }
 
+.user-col-header-username {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.user-col-header-stats {
+    font-size: 16px;
+    font-weight: lighter;
+}
+
 .user-col-body {
     padding-top: 10px;
 }
 
 .grid-release-item {
-    padding: 0 10px 20px 0;
+    padding-bottom: 20px;
+}
+
+.grid-release-item-details {
+    display: table;
+    margin: 0 auto;
 }
 
 .list-release-item {
@@ -43,8 +58,8 @@
 }
 
 .user-header-img {
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
 }
 
 .shadow-img {
