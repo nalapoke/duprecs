@@ -11,5 +11,5 @@ import { IRelease } from '../../../models/release';
 })
 export class ListViewComponent {
   @Input() userCollection: IRelease[];
-  /*maxTitleAndArtistLength: number = 18;*/
+  @Input() filterText: string;
 }
