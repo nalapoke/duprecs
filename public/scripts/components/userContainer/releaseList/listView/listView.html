@@ -1,5 +1,5 @@
 <table class="table table-striped">
-    <tr *ngFor="#release of userCollection | releaseFilter:filterText">
+    <tr *ngFor="#release of releaseCollection | releaseFilter:filterText">
         <div class="list-release-item">{{ release.basic_information.artists[0].name | truncateFilter:maxTitleAndArtistLength }} - {{ release.basic_information.title | truncateFilter:maxTitleAndArtistLength }} - {{ release.basic_information.year }}</div>
     </tr>
 </table>

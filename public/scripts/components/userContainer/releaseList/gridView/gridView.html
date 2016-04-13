@@ -1,5 +1,5 @@
 <div class="row">
-    <div *ngFor="#release of userCollection | releaseFilter:filterText"
+    <div *ngFor="#release of releaseCollection | releaseFilter:filterText"
          class="grid-release-item col-xs-6 col-sm-3 col-md-2 col-lg-2">
         <div class="grid-release-item-details">
             <img [src]="release.basic_information.thumb" class="album-thumb shadow-img">

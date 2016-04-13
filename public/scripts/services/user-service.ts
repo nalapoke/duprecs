@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { IUser } from '../models/user';
 import { IUserCollection } from '../models/userCollection';
+import { IUserWantlist } from '../models/userWantlist';
 import { SortType } from '../models/sortType';
 import { SortOrderType } from '../models/sortOrderType';
 
@@ -20,9 +21,16 @@ export class UserService {
   }
 
   getUserCollection(username: string, page: number, sortType: SortType, sortOrderType: SortOrderType): Observable<IUserCollection> {
-    return this._http.get(this._userUrl + username + '/collection/folders/0/releases?&per_page=50&page='
+    return this._http.get(this._userUrl + username + '/collection/folders/0/releases?per_page=50&page='
       + page + '&sort=' + SortType[sortType] + '&sort_order=' + SortOrderType[sortOrderType])
         .map((response: Response) => <IUserCollection>response.json())
+        .catch(this.handleError);
+  }
+
+  getUserWantlist(username: string, page: number, sortType: SortType, sortOrderType: SortOrderType): Observable<IUserWantlist> {
+    return this._http.get(this._userUrl + username + '/wantlist?per_page=50&page='
+      + page + '&sort=' + SortType[sortType] + '&sort_order=' + SortOrderType[sortOrderType])
+        .map((response: Response) => <IUserWantlist>response.json())
         .catch(this.handleError);
   }
 

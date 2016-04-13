@@ -13,6 +13,6 @@ export class HomeComponent {
 
   goToUserPage(): void {
     if (!this.searchUsername) return;
-    this._router.navigate(['UserCollection', { username: this.searchUsername }]);
+    this._router.navigate(['User', { username: this.searchUsername }]);
   }
 }

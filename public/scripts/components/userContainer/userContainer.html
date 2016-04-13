@@ -1,0 +1,25 @@
+<div class="user-col-header">
+    <div class="user-col-header-left pull-left">
+        <img *ngIf="!user && !userError" class="user-header-img" src="../../images/vinyl_spinner.gif">
+        <img *ngIf="userError" class="user-header-img" src="../../images/vinyl_broken.gif">
+        <img *ngIf="user" [src]="user.avatar_url" class="user-header-img shadow-img">
+    </div>
+    <div class="user-col-header-right pull-left">
+        <p *ngIf="!user && !userError">finding Discogs user...</p>
+        <p *ngIf="userError" class="text-danger">{{ userError }}</p>
+        <div *ngIf="user">
+            <div class="user-col-header-username">{{ user.username }}</div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default user-collection-type-btn" (click)="onReleaseCollectionTypeChange(releaseCollectionTypes.collection)"
+                        [ngClass]="{ active: currentReleaseCollection.type === releaseCollectionTypes.collection }">
+                    {{ releaseCollectionTypes[releaseCollectionTypes.collection] }}: {{ user.num_collection }}
+                </button>
+                <button type="button" class="btn btn-default user-collection-type-btn" (click)="onReleaseCollectionTypeChange(releaseCollectionTypes.wantlist)"
+                        [ngClass]="{ active: currentReleaseCollection.type === releaseCollectionTypes.wantlist }">
+                    {{ releaseCollectionTypes[releaseCollectionTypes.wantlist] }}: {{ user.num_wantlist }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<dr-release-list *ngIf="user" [releaseCollection]="currentReleaseCollection"></dr-release-list>

@@ -33,9 +33,9 @@
     font-weight: bold;
 }
 
-.user-col-header-stats {
-    font-size: 16px;
-    font-weight: lighter;
+.user-collection-type-btn {
+    font-size: 10px;
+    width: 100px;
 }
 
 .user-col-body {

@@ -4,7 +4,7 @@ import 'rxjs/Rx';   // Load all features
 
 import { NavbarComponent } from '../navbar/navbar-component';
 import { HomeComponent } from '../home/home-component';
-import { UserCollectionComponent } from '../userCollection/userCollection-component';
+import { UserContainerComponent } from '../userContainer/userContainer-component';
 import { UserService } from '../../services/user-service';
 
 @Component({
@@ -15,7 +15,7 @@ import { UserService } from '../../services/user-service';
 })
 @RouteConfig([
   { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
-  { path: '/user/:username', name: 'UserCollection', component: UserCollectionComponent },
+  { path: '/user/:username', name: 'User', component: UserContainerComponent },
   { path: '/**', redirectTo: ['Home'] }
 ])
 export class AppComponent {

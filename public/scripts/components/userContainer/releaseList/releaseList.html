@@ -1,0 +1,38 @@
+<div *ngIf="releaseCollection.errorMessage" class="text-danger">
+    {{ releaseCollection.errorMessage }}
+</div>
+<div *ngIf="releaseCollection.fetching">
+    fetching {{ releaseCollectionTypes[releaseCollection.type] }}...
+</div>
+<div *ngIf="!releaseCollection.errorMessage && !releaseCollection.fetching">
+    <div *ngIf="releaseCollection.collection.length > 0" class="user-col-toolbar">
+        <div class="pull-left">
+            <input [(ngModel)]="filterText" type="text"
+                   class="user-col-filter-input form-control duprecs-form-control"
+                   placeholder="find a release">
+        </div>
+        <div class="btn-group pull-left" role="group">
+            <button type="button" class="btn btn-default" (click)="onReleaseListViewTypeClick(releaseListViewTypes.grid)"
+                    [ngClass]="{ active: currentReleaseListViewType === releaseListViewTypes.grid }">
+                <span class="glyphicon glyphicon-th-large"></span>
+            </button>
+            <button type="button" class="btn btn-default" (click)="onReleaseListViewTypeClick(releaseListViewTypes.list)"
+                    [ngClass]="{ active: currentReleaseListViewType === releaseListViewTypes.list }">
+                <span class="glyphicon glyphicon-th-list"></span>
+            </button>
+        </div>
+    </div>
+    <div class="user-col-body">
+        <div *ngIf="releaseCollection.collection.length === 0">
+                User's {{ releaseCollectionTypes[releaseCollection.type] }} is empty
+        </div>
+        <div *ngIf="releaseCollection.collection.length > 0">
+            <dr-grid-view *ngIf="currentReleaseListViewType === releaseListViewTypes.grid"
+                          [releaseCollection]="releaseCollection.collection"
+                          [filterText]="filterText"></dr-grid-view>
+            <dr-list-view *ngIf="currentReleaseListViewType === releaseListViewTypes.list"
+                          [releaseCollection]="releaseCollection.collection"
+                          [filterText]="filterText"></dr-list-view>
+        </div>
+    </div>
+</div>
