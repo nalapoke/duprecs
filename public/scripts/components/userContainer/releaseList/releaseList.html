@@ -6,12 +6,10 @@
 </div>
 <div *ngIf="!releaseCollection.errorMessage && !releaseCollection.fetching">
     <div *ngIf="releaseCollection.collection.length > 0" class="user-col-toolbar">
-        <div class="pull-left">
-            <input [(ngModel)]="filterText" type="text"
-                   class="user-col-filter-input form-control duprecs-form-control"
-                   placeholder="find a release">
-        </div>
-        <div class="btn-group pull-left" role="group">
+        <input [(ngModel)]="filterText" type="text"
+               class="user-col-filter-input form-control duprecs-form-control pull-left"
+               placeholder="find a release">
+        <div class="btn-group pull-left view-type-btn-group" role="group">
             <button type="button" class="btn btn-default" (click)="onReleaseListViewTypeClick(releaseListViewTypes.grid)"
                     [ngClass]="{ active: currentReleaseListViewType === releaseListViewTypes.grid }">
                 <span class="glyphicon glyphicon-th-large"></span>
