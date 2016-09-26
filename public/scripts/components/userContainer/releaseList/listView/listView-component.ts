@@ -1,13 +1,9 @@
-import { Component, Input } from 'angular2/core';
-
-import { ReleaseFilterPipe } from '../../../../pipes/releaseFilter-pipe';
-import { TruncateFilterPipe } from '../../../../pipes/truncateFilter-pipe';
+import { Component, Input } from '@angular/core';
 import { IRelease } from '../../../../models/release';
 
 @Component({
   selector: 'dr-list-view',
-  templateUrl: 'scripts/components/userContainer/releaseList/listView/listView.html',
-  pipes: [ReleaseFilterPipe, TruncateFilterPipe]
+  templateUrl: 'scripts/components/userContainer/releaseList/listView/listView.html'
 })
 export class ListViewComponent {
   @Input() releaseCollection: IRelease[];

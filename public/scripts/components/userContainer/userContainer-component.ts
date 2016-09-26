@@ -1,14 +1,11 @@
-import { Component, OnInit, OnDestroy } from 'angular2/core';
-import { RouteParams } from 'angular2/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
 import { UserService } from '../../services/user-service';
-import { ReleaseListComponent } from './releaseList/releaseList-component';
 import { IUser } from '../../models/user';
 import { IReleaseCollection } from '../../models/releaseCollection';
-import { IUserCollection } from '../../models/userCollection';
-import { IUserWantlist } from "../../models/userWantlist";
 import { IRelease } from '../../models/release';
 import { IArtist } from '../../models/artist';
 import { SortType } from '../../models/sortType';
@@ -16,8 +13,7 @@ import { SortOrderType } from '../../models/sortOrderType';
 import { ReleaseCollectionType } from '../../models/releaseCollectionType';
 
 @Component({
-  templateUrl: 'scripts/components/userContainer/userContainer.html',
-  directives: [ReleaseListComponent]
+  templateUrl: 'scripts/components/userContainer/userContainer.html'
 })
 export class UserContainerComponent implements OnInit, OnDestroy{
   private _userSubscription: Subscription;
@@ -38,8 +34,7 @@ export class UserContainerComponent implements OnInit, OnDestroy{
 
   constructor(
     private _userService: UserService,
-    routeParams: RouteParams) {
-    this.username = routeParams.get('username');
+    private _route: ActivatedRoute) {
     this._userCollection = <IReleaseCollection>{
       type: ReleaseCollectionType.collection,
       fetching: true,
@@ -58,6 +53,8 @@ export class UserContainerComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
+    this._route.queryParams.map(params => params['username'])
+        .subscribe(value => { this.username = value; });
     this.getUser();
   }
 

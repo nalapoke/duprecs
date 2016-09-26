@@ -1,4 +1,4 @@
-import { PipeTransform, Pipe } from 'angular2/core';
+import { PipeTransform, Pipe } from '@angular/core';
 import { IRelease } from '../models/release';
 import { IArtist } from '../models/artist';
 

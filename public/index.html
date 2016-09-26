@@ -8,30 +8,6 @@
 
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="styles/duprecs.css"/>
-
-    <!-- Dependencies for ng2 -->
-    <script src="es6-shim/es6-shim.min.js"></script>
-    <script src="systemjs/dist/system-polyfills.js"></script>
-    <script src="angular2/es6/dev/src/testing/shims_for_IE.js"></script>
-    <script src="angular2/bundles/angular2-polyfills.js"></script>
-    <script src="systemjs/dist/system.src.js"></script>
-    <script src="rxjs/bundles/Rx.js"></script>
-    <script src="angular2/bundles/angular2.dev.js"></script>
-    <script src="angular2/bundles/http.dev.js"></script>
-    <script src="angular2/bundles/router.dev.js"></script>
-
-    <script>
-        System.config({
-            packages: {
-                scripts: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-        System.import('scripts/bootstrapper')
-                .then(null, console.error.bind(console));
-    </script>
 </head>
 <body>
     <dr-app>

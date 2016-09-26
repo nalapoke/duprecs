@@ -1,10 +1,8 @@
-import { Component } from 'angular2/core';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'dr-navbar',
-  templateUrl: 'scripts/components/navbar/navbar.html',
-  directives: [ROUTER_DIRECTIVES]
+  templateUrl: 'scripts/components/navbar/navbar.html'
 })
 export class NavbarComponent {
   public brandName: string = "Duprecs";

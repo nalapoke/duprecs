@@ -1,15 +1,12 @@
-import { Component, Input, OnChanges } from 'angular2/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
-import { GridViewComponent } from './gridView/gridView-component';
-import { ListViewComponent } from './listView/listView-component';
 import { IReleaseCollection } from '../../../models/releaseCollection';
 import { ReleaseListViewType } from '../../../models/releaseListViewType';
 import { ReleaseCollectionType } from '../../../models/releaseCollectionType';
 
 @Component ({
   selector: 'dr-release-list',
-  templateUrl: 'scripts/components/userContainer/releaseList/releaseList.html',
-  directives: [GridViewComponent, ListViewComponent]
+  templateUrl: 'scripts/components/userContainer/releaseList/releaseList.html'
 })
 export class ReleaseListComponent implements OnChanges {
   @Input() releaseCollection: IReleaseCollection;
